@@ -1,6 +1,5 @@
 import groovy.json.JsonOutput
 properties([
-    [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: true],
     disableConcurrentBuilds(),
     parameters([
         choice(name: 'PROTO', choices: ['http'], description: 'Протокол'),
