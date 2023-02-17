@@ -3,10 +3,9 @@ import groovy.json.JsonOutput
 properties([
     disableConcurrentBuilds(),
     parameters([
-        choice(name: 'TARGET', choices: ['127.0.0.1'], description: 'target')
+        choice(name: 'TARGET', choices: ['192.168.25.206'], description: 'target')
     ])
 ])
-
 
 node('worker') {
     stage('Action') {
