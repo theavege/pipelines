@@ -3,7 +3,7 @@ properties([
     disableConcurrentBuilds(),
     parameters([
         choice(name: 'ENV', choices: ['test', 'prod'], description: 'Контур'),
-        choice(name: 'TARGET', choices: ['site', 'api', 'elastic'], description: 'Сервис'),
+        choice(name: 'TARGET', choices: ['api', 'elk', 'ivilive'], description: 'Сервис'),
         choice(name: 'SWITCH', choices: ['off', 'on'], description: 'action')
     ])
 ])
