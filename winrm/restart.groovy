@@ -6,7 +6,6 @@ properties([
         choice(name: 'PROTO', choices: ['http'], description: 'Протокол')
     ])
 ])
-
 node('worker') {
     stage('Action') {
         cleanWs()
@@ -24,7 +23,7 @@ from winrm import Session
 from sys import stderr
 
 s = Session("192.168.25.206", auth=("${user}", "${pass}"), transport='ntlm')
-stderr.write('{}\n'.format(str(s.run_ps("hostname").std_out))
+stderr.write('{}\n'.format(str(s.run_ps("hostname").std_out)))
 """
                 )
             }
