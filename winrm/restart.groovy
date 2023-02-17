@@ -3,7 +3,7 @@ import groovy.json.JsonOutput
 properties([
     disableConcurrentBuilds(),
     parameters([
-        choice(name: 'PROTO', choices: ['http'], description: 'Протокол')
+        choice(name: 'TARGET', choices: ['127.0.0.1'], description: 'target')
     ])
 ])
 node('worker') {
@@ -14,19 +14,17 @@ node('worker') {
             passwordVariable: 'pass',
             usernameVariable: 'user'
         )]) {
-            withEnv(['SSHPASS=' + pass]) {
-                sh(
-                    returnStdout: false,
-                    script: '#!/usr/bin/env python' +
+            sh(
+                returnStdout: false,
+                script: '#!/usr/bin/env python' +
 """
 from winrm import Session
 from sys import stderr
 
-s = Session("192.168.25.206", auth=("${user}", "${pass}"), transport='ntlm')
+s = Session("${params.TARGET}", auth=("${user}", "${pass}"), transport='ntlm')
 stderr.write('{}\n'.format(str(s.run_ps("hostname").std_out)))
 """
-                )
-            }
+            )
         }
         cleanWs()
     }
