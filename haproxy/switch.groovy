@@ -7,10 +7,12 @@ properties([
         choice(name: 'ACTION', choices: ['off', 'on'], description: 'action')
     ])
 ])
+
 final Map ENV = [
     'prod':'192.168.25.88',
     'test':'192.168.25.59'
 ]
+
 node('worker') {
     stage('Action') {
         withCredentials([usernamePassword(
