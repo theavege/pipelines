@@ -24,7 +24,7 @@ node('worker') {
                 sh(
                     returnStdout: false,
                     script: """
-sshpass -e ssh ${user}@${ENV[params.ENV]} 'switch.sh --${params.TARGET} --${params.ACTION}'
+sshpass -e ssh -o 'StrictHostKeyChecking=no' ${user}@${ENV[params.ENV]} 'switch.sh --${params.TARGET} --${params.ACTION}'
 """
                 )
             }
