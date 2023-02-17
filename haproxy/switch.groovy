@@ -8,15 +8,25 @@ properties([
     ])
 ])
 final Map ENV = [
-    'PROD':'192.168.25.88',
-    'TEST':'192.168.25.59'
+    'prod':'192.168.25.88',
+    'test':'192.168.25.59'
 ]
 node('worker') {
     stage('Action') {
-        sh(
-            returnStdout: false,
-            script: "switch.sh --${params.BACKEND} --${params.SWITCH}"
-        )
+        withCredentials([usernamePassword(
+            credentialsId: '456b7016a916a4b178dd72b947c152b7',
+            passwordVariable: 'pass',
+            usernameVariable: 'user'
+        )]) {
+            withEnv(['SSHPASS=' + pass]) {
+                sh(
+                    returnStdout: false,
+                    script: """
+sshpass -e ssh ${user}@${ENV[params.ENV]} 'switch.sh --${params.BACKEND} --${params.SWITCH}'
+"""
+                )
+            }
+        }
         cleanWs()
     }
 }
