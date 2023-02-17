@@ -21,8 +21,8 @@ node('worker') {
 from winrm import Session
 from sys import stderr
 
-s = Session("${params.TARGET}", auth=("${user}", "${pass}"), transport='ntlm')
-stderr.write('{}\n'.format(str(s.run_ps("hostname").std_out)))
+s = Session('${params.TARGET}', auth=('${user}', '${pass}'), transport='ntlm')
+stderr.write('{}\n'.format(str(s.run_ps('hostname').std_out)))
 """
             )
         }
