@@ -6,6 +6,7 @@ properties([
         choice(name: 'TARGET', choices: ['127.0.0.1'], description: 'target')
     ])
 ])
+
 node('worker') {
     stage('Action') {
         cleanWs()
