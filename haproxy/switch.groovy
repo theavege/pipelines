@@ -4,7 +4,7 @@ properties([
     parameters([
         choice(name: 'ENV', choices: ['test', 'prod'], description: 'Контур'),
         choice(name: 'TARGET', choices: ['api', 'elk', 'ivilive'], description: 'Сервис'),
-        choice(name: 'SWITCH', choices: ['off', 'on'], description: 'action')
+        choice(name: 'ACTION', choices: ['off', 'on'], description: 'action')
     ])
 ])
 final Map ENV = [
@@ -22,7 +22,7 @@ node('worker') {
                 sh(
                     returnStdout: false,
                     script: """
-sshpass -e ssh ${user}@${ENV[params.ENV]} 'switch.sh --${params.BACKEND} --${params.SWITCH}'
+sshpass -e ssh ${user}@${ENV[params.ENV]} 'switch.sh --${params.TARGET} --${params.ACTION}'
 """
                 )
             }
