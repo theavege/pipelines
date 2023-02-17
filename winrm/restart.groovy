@@ -1,10 +1,12 @@
 import groovy.json.JsonOutput
+
 properties([
     disableConcurrentBuilds(),
     parameters([
         choice(name: 'PROTO', choices: ['http'], description: 'Протокол')
     ])
 ])
+
 node('worker') {
     stage('Action') {
         cleanWs()
