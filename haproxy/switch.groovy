@@ -6,7 +6,8 @@ properties([
         choice(name: 'PROTO', choices: ['http'], description: 'Протокол'),
         text(name: 'TARGETS', defaultValue: '127.0.0.1', description: 'Цели тестирования'),
         string(name: 'PORT', defaultValue: '80', trim: true, description: 'Порт'),
-        string(name: 'CONCURRENT', defaultValue: '8', trim: true, description: 'Количество параллельных потоков')
+        string(name: 'CONCURRENT', defaultValue: '8', trim: true, description: 'Количество параллельных потоков'),
+        text(name: 'ENDPOINTS', defaultValue: '/', description: 'Endpoints')
     ])
 ])
 node('worker') {
