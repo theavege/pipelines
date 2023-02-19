@@ -22,7 +22,9 @@ node('worker') {
                 endpoints: params.ENDPOINTS.tokenize('\n').sort()
             ])
         )
-        sh "time rmeter --config '${env.BUILD_TAG}.json' --output '${env.BUILD_TAG}.xlsx'"
+        ansiColor('xterm') {
+            sh "time rmeter --config '${env.BUILD_TAG}.json' --output '${env.BUILD_TAG}.xlsx'"
+        }
         archiveArtifacts(
             artifacts: env.BUILD_TAG + '.xlsx',
             followSymlinks: false
