@@ -20,8 +20,7 @@ node('worker') {
             usernameVariable: 'user'
         )]) {
             final String SCRIPT = [
-                'Remove-Item C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js',
-                'echo "remove files in INetCache"'
+                'Start-ScheduledTask -TaskName "INetCache"'
             ].join(';')
             sh(
                 returnStdout: false,
