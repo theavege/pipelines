@@ -11,6 +11,8 @@ properties([
     ])
 ])
 
+
+
 node('worker') {
     stage('Action') {
         cleanWs()
