@@ -1,14 +1,5 @@
-import groovy.json.JsonOutput
-
 properties([
-    disableConcurrentBuilds(),
-    parameters([
-        choice(name: 'TARGET', choices: [
-            '127.0.0.1',
-            '192.168.25.209',
-            '192.168.25.222'
-        ].sort(), description: 'target')
-    ])
+    disableConcurrentBuilds()
 ])
 
 node('worker') {
@@ -29,7 +20,7 @@ node('worker') {
 from sys import stderr
 from winrm import Session
 
-s = Session('${params.TARGET}', auth=('${user}', '${pass}'), transport='ntlm')
+s = Session('${env.JOB_NAME.tokenize('_')[-1]}', auth=('${user}', '${pass}'), transport='ntlm')
 stderr.write(str(s.run_cmd('powershell', ['-command', r'${SCRIPT}']).std_out))
 """
             )
