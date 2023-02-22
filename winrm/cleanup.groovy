@@ -11,7 +11,8 @@ node('worker') {
             usernameVariable: 'user'
         )]) {
             final String SCRIPT = [
-                'Remove-Item C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js'
+                'Remove-Item C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js',
+                'hostname'
             ].join(';')
             sh(
                 returnStdout: false,
