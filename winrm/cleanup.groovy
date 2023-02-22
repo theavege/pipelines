@@ -20,7 +20,7 @@ node('worker') {
             usernameVariable: 'user'
         )]) {
             final String SCRIPT = [
-                'Start-ScheduledTask -TaskName "INetCache"'
+                'Remove-Item C:\Users\ivolrt\AppData\Local\Microsoft\Windows\INetCache\IE\*.js'
             ].join(';')
             sh(
                 returnStdout: false,
@@ -30,7 +30,7 @@ from sys import stderr
 from winrm import Session
 
 s = Session('${params.TARGET}', auth=('${user}', '${pass}'), transport='ntlm')
-stderr.write(str(s.run_cmd('powershell', ['-command', '${SCRIPT}']).std_out))
+stderr.write(str(s.run_cmd('powershell', ['-command', r'${SCRIPT}']).std_out))
 """
             )
         }
