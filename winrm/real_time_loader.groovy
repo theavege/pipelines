@@ -39,7 +39,7 @@ from winrm import Session
 from sys import stderr
 
 s = Session('${params.TARGET}', auth=('${user}', '${pass}'), transport='ntlm')
-stderr.write(str(s.run_ps(${SCRIPT}).std_out))
+stderr.write(str(s.run_cmd('powershell', ['-command', ${SCRIPT}]).std_out))
 """
             )
         }
