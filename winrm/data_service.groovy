@@ -34,7 +34,7 @@ from sys import stderr
 from winrm import Session
 
 s = Session('${params.TARGET}', auth=('${user}', '${pass}'), transport='ntlm')
-stderr.write(str(s.run__cmd('powershell', ['-command', ${SCRIPT}]).std_out))
+stderr.write(str(s.run_cmd('powershell', ['-command', ${SCRIPT}]).std_out))
 """
             )
         }
