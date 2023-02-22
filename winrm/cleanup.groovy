@@ -20,7 +20,7 @@ node('worker') {
 from sys import stderr
 from winrm import Session
 
-s = Session('${env.JOB_NAME.tokenize('_')[-1]}', auth=('${user}', '${pass}'), transport='ntlm')
+s = Session("${env.JOB_NAME.tokenize('_')[-4..-1].join('.')}", auth=('${user}', '${pass}'), transport='ntlm')
 stderr.write(str(s.run_cmd('powershell', ['-command', r'${SCRIPT}']).std_out))
 """
             )
