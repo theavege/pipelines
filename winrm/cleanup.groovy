@@ -5,9 +5,8 @@ properties([
     parameters([
         choice(name: 'TARGET', choices: [
             '127.0.0.1',
-            '192.168.25.220',
-            '192.168.25.114',
-            '192.168.25.102'
+            '192.168.25.209',
+            '192.168.25.222'
         ].sort(), description: 'target')
     ])
 ])
@@ -21,10 +20,7 @@ node('worker') {
             usernameVariable: 'user'
         )]) {
             final String SCRIPT = [
-                'Stop-Service  -Name IVDataService -Force'
-                'Get-Process   -Name IVDataService | Stop-Process -Force'
-                'Sleep 10'
-                'Start-Service -Name IVDataService'
+                'Remove-Item C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js'
             ].join(';')
             sh(
                 returnStdout: false,
