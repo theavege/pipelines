@@ -15,7 +15,7 @@ node('worker') {
     stage('Action') {
         cleanWs()
         withCredentials([usernamePassword(
-            credentialsId: '9354ac3f628b97c899667da482e04e9a',
+            credentialsId: 'b8cc5d5da274bddee03c425b6269837e',
             passwordVariable: 'pass',
             usernameVariable: 'user'
         )]) {
