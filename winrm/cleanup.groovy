@@ -41,6 +41,8 @@ node('worker') {
     }
 }
 
+
+
 void winrm(String credId, String script) {
     withCredentials([usernamePassword(
         credentialsId: credId,
