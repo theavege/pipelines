@@ -11,7 +11,7 @@ node('worker') {
                     'b8cc5d5da274bddee03c425b6269837e',
                     [
 'Remove-Item "C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js"',
-'Write-Host  "${env:COMPUTERNAME}"'
+'hostname'
                     ].join(';')
                 )
                 break;
