@@ -20,7 +20,8 @@ node('worker') {
                     '9354ac3f628b97c899667da482e04e9a',
                     [
 'Stop-ScheduledTask  -TaskName "Restart RT Loader"',
-'Start-ScheduledTask -TaskName "Restart RT Loader"'
+'Start-ScheduledTask -TaskName "Restart RT Loader"',
+'hostname'
                     ].join(';')
                 )
                 break;
@@ -40,8 +41,6 @@ node('worker') {
         cleanWs()
     }
 }
-
-
 
 void winrm(String credId, String script) {
     withCredentials([usernamePassword(
