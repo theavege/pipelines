@@ -10,7 +10,7 @@ node('worker') {
                 winrm(
                     'b8cc5d5da274bddee03c425b6269837e',
                     [
-'Remove-Item C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js',
+'Remove-Item "C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js"',
 'Write-Host  "${env:COMPUTERNAME}"'
                     ].join(';')
                 )
@@ -28,9 +28,9 @@ node('worker') {
 'Get-Service   -Name "ActivWorkstationServiceDaemon"',
 'Stop-Service  -Name "ActivWorkstationServiceDaemon" -Force',
 'Start-Service -Name "ActivWorkstationServiceDaemon"',
-'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\DataProvider.exe"'
+'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\DataProvider.exe"',
 'Start-Sleep   -Seconds 10',
-'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\DataProvider.exe"'
+'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\DataProvider.exe"',
 'Write-Host    "${env:COMPUTERNAME}"'
                     ].join(';')
                 )
