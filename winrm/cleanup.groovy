@@ -5,8 +5,7 @@ properties([
 node('worker') {
     stage('Action') {
         cleanWs()
-        println(env.JOB_NAME)
-        switch (env.JOB_NAME.tokenize('_')[0]) {
+        switch (env.JOB_BASE_NAME.tokenize('_')[0]) {
             case 'cleanup':
                 winrm(
                     'b8cc5d5da274bddee03c425b6269837e',
@@ -68,7 +67,7 @@ void winrm(String credId, String script) {
 from sys import stderr
 from winrm import Session
 
-s = Session("${env.JOB_NAME.tokenize('_')[-4..-1].join('.')}", auth=('${user}', '${pass}'), transport='ntlm')
+s = Session("${env.JOB_BASE_NAME.tokenize('_')[-4..-1].join('.')}", auth=('${user}', '${pass}'), transport='ntlm')
 stderr.write(str(s.run_cmd('powershell', ['-command', r'${script}']).std_out))
 """
         )
