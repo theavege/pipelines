@@ -11,7 +11,7 @@ node('worker') {
                     'b8cc5d5da274bddee03c425b6269837e',
                     [
 'Remove-Item C:\\Users\\ivolrt\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\*.js',
-'Write-Host  ${env:COMPUTERNAME}'
+'hostname'
                     ].join(';')
                 )
                 break;
@@ -31,7 +31,7 @@ node('worker') {
 'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe',
 'Start-Sleep   -Seconds 10',
 'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe',
-'Write-Host    ${env:COMPUTERNAME}'
+'hostname'
                     ].join(';')
                 )
                 break;
@@ -45,7 +45,7 @@ node('worker') {
 'Stop-Process  -Name IVDataService -Force',
 'Start-Sleep   -Seconds 10',
 'Start-Service -Name IVDataService',
-'Write-Host    ${env:COMPUTERNAME}'
+'hostname'
                     ].join(';')
                 )
                 break;
@@ -53,8 +53,6 @@ node('worker') {
         cleanWs()
     }
 }
-
-
 
 void winrm(String credId, String script) {
     withCredentials([usernamePassword(
