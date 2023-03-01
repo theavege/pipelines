@@ -24,7 +24,7 @@ node('worker') {
                     ].join(';')
                 )
                 break;
-            case 'dataprovider' :
+            case 'dataservice' :
                 winrm(
                     '9354ac3f628b97c899667da482e04e9a',
                     [
