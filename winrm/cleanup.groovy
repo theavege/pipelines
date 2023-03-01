@@ -31,7 +31,7 @@ node('worker') {
 'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe"',
 'Start-Sleep   -Seconds 10',
 'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe"',
-'Write-Host    "${env:COMPUTERNAME}"'
+'hostname'
                     ].join(';')
                 )
                 break;
@@ -45,7 +45,7 @@ node('worker') {
 'Stop-Process  -Name "IVDataService" -Force',
 'Start-Sleep   -Seconds 10',
 'Start-Service -Name "IVDataService"',
-'Write-Host    "${env:COMPUTERNAME}"'
+'hostname'
                     ].join(';')
                 )
                 break;
