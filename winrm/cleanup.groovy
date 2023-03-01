@@ -19,7 +19,7 @@ node('worker') {
                 winrm(
                     '9354ac3f628b97c899667da482e04e9a',
                     [
-'Stop-ScheduledTask -TaskName "Restart RT Loader"'
+'Stop-ScheduledTask  -TaskName "Restart RT Loader"'
 'Start-ScheduledTask -TaskName "Restart RT Loader"'
                     ].join(';')
                 )
