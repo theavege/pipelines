@@ -5,6 +5,7 @@ properties([
 node('worker') {
     stage('Action') {
         cleanWs()
+        println(env.JOB_BASE_NAME)
         switch (env.JOB_BASE_NAME.tokenize('_')[0]) {
             case 'cleanup':
                 winrm(
