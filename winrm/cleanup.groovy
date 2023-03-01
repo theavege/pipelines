@@ -28,9 +28,9 @@ node('worker') {
 'Get-Service   -Name "ActivWorkstationServiceDaemon"',
 'Stop-Service  -Name "ActivWorkstationServiceDaemon" -Force',
 'Start-Service -Name "ActivWorkstationServiceDaemon"',
-'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\DataProvider.exe"',
+'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe"',
 'Start-Sleep   -Seconds 10',
-'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\DataProvider.exe"',
+'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe"',
 'Write-Host    "${env:COMPUTERNAME}"'
                     ].join(';')
                 )
@@ -53,8 +53,6 @@ node('worker') {
         cleanWs()
     }
 }
-
-
 
 void winrm(String credId, String script) {
     withCredentials([usernamePassword(
