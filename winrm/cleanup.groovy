@@ -23,9 +23,9 @@ node('worker') {
                     passwordVariable: 'pass',
                     usernameVariable: 'user'
                 )]) {
-                        winrm(
-                            '9354ac3f628b97c899667da482e04e9a',
-                            [
+                    winrm(
+                        '9354ac3f628b97c899667da482e04e9a',
+                        [
 'Get-Process   -Name     "DataProvider"',
 'Stop-Process  -Name     "DataProvider" -Force',
 'Get-Process   -Name     "RTEngine"',
@@ -39,10 +39,9 @@ node('worker') {
 'Start-Sleep   -Seconds  10',
 'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe"',
 'Write-Host    "${env:COMPUTERNAME}"'
-                            ].join(';')
-                        )
-                    }
-                )
+                        ].join(';')
+                    )
+                }
                 break;
             case 'dataservice' :
                 winrm(
