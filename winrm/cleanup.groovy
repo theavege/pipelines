@@ -35,10 +35,10 @@ node('worker') {
 'Get-Service   -Name     "ActivWorkstationServiceDaemon"',
 'Stop-Service  -Name     "ActivWorkstationServiceDaemon" -Force',
 "Start-Service -Name     \"ActivExecutive\" -ArgumentList \"-U${user} -P${pass}\"",
-"Start-Process -FilePath \"${env:PROGRAMFILES(X86)}\\ActivWorkstation\\bin\\ActivExecutive.exe\"",
+"Start-Process -FilePath \"\${env:PROGRAMFILES(X86)}\\ActivWorkstation\\bin\\ActivExecutive.exe\"",
 'Start-Sleep   -Seconds  10',
 'Start-Process -FilePath "C:\\RT\\Services\\RTLoader\\DataProvider.exe"',
-"Write-Host    \"${env:COMPUTERNAME}\""
+"Write-Host    \"\${env:COMPUTERNAME}\""
                         ].join(';')
                     )
                 }
