@@ -1,3 +1,5 @@
+import org.apache.commons.codec.digest.DigestUtils
+
 properties([
     disableConcurrentBuilds()
 ])
@@ -17,7 +19,7 @@ node('worker') {
                 break;
             case 'dataprovider' :
                 withCredentials([usernamePassword(
-                    credentialsId:    env.JOB_BASE_NAME,
+                    credentialsId:    DigestUtils.md5Hex(env.JOB_BASE_NAME),
                     passwordVariable: 'pass',
                     usernameVariable: 'user'
                 )]) {
